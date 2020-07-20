@@ -87,17 +87,12 @@ func NewAdapterFromOptions(adapter *Adapter) (*Adapter, error) {
 func (a *Adapter) open() error {
 	var err error
 	var db gdb.DB
-
-	gdb.SetConfig(gdb.Config{
-		"casbin": gdb.ConfigGroup{
-			gdb.ConfigNode{
-				Type:     a.driverName,
-				LinkInfo: a.dataSourceName,
-				Role:     "master",
-				Weight:   100,
-			},
-		},
-	})
+	gdb.AddConfigNode("casbin",gdb.ConfigNode{
+		Type:     a.driverName,
+		LinkInfo: a.dataSourceName,
+		Role:     "master",
+		Weight:   100,
+	},)
 	db, err = gdb.New("casbin")
 
 	if err != nil {
