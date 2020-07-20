@@ -1,4 +1,4 @@
-module github.com/vance-liu/gdb-adapter
+module github.com/1307super/gdb-adapter
 
 require (
 	github.com/casbin/casbin/v2 v2.8.6
